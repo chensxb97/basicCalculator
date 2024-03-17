@@ -4,8 +4,19 @@
 <html> 
   
 <head> 
-    <title>HTML Calculator</title> 
-  
+    <title>A Basic Calculator</title> 
+    <script src= 
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+            integrity= 
+    "sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script> 
+        <script src= 
+    "https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+            integrity= 
+    "sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script> 
     <!-- For styling -->
     <style> 
         body {
@@ -13,7 +24,8 @@
         }
     
         table { 
-            border: 1px solid slategrey; 
+            border: 3px solid slategrey; 
+            border-radius:1%;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -52,41 +64,58 @@
 </head> 
   
 <body> 
-    <form>
-        <table id="calcu"> 
-            <tr> 
-                <td colspan="3"> 
-                    <input type="text" id="result"> 
-                </td> 
-                <td><button class="clear" value="c">Clear</button></td> 
-            </tr> 
-
-            <tr> 
-                <td><button class="number" value="1">1</button></td> 
-                <td><button class="number" value="2">2</button></td> 
-                <td><button class="number" value="3">3</button></td> 
-                <td><button class="operator" value="/">/</button></td> 
-            </tr> 
-            <tr> 
-                <td><button class="number" value="4">4</button></td> 
-                <td><button class="number" value="5">5</button></td> 
-                <td><button class="number" value="6">6</button></td> 
-                <td><button class="operator" value="*">*</button></td> 
-            </tr> 
-            <tr> 
-                <td><button class="number" value="7">7</button></td> 
-                <td><button class="number" value="8">8</button></td> 
-                <td><button class="number" value="9">9</button></td> 
-                <td><button class="operator" value="-">-</button></td> 
-            </tr> 
-            <tr> 
-                <td><button class="number" value="0">0</button></td> 
-                <td><button class="number" value=".">.</button></td> 
-                <td><button class="number" value="=">=</button></td> 
-                <td><button class="operator" value="+">+</button></td> 
-            </tr> 
-        </table> 
-    </form>
+  <table id="calculator"> 
+      <tr> 
+          <td colspan="3"> 
+            <input type="text" id="result" readonly> 
+          </td> 
+          <td><button class="clear" value="clear" onclick="clr()">C</button></td>
+      </tr> 
+      <tr> 
+        <td><button class="number" value="1" onclick="press('1')">1</button></td> 
+        <td><button class="number" value="2" onclick="press('2')">2</button></td> 
+        <td><button class="number" value="3" onclick="press('3')">3</button></td> 
+        <td><button class="operator" value="/" onclick="press('/')">/</button></td> 
+      </tr> 
+      <tr> 
+        <td><button class="number" value="4" onclick="press('4')">4</button></td> 
+        <td><button class="number" value="5" onclick="press('5')">5</button></td> 
+        <td><button class="number" value="6" onclick="press('6')">6</button></td> 
+        <td><button class="operator" value="*" onclick="press('*')">x</button></td> 
+      </tr> 
+      <tr> 
+        <td><button class="number" value="7" onclick="press('7')">7</button></td> 
+        <td><button class="number" value="8" onclick="press('8')">8</button></td> 
+        <td><button class="number" value="9" onclick="press('9')">9</button></td> 
+        <td><button class="operator" value="-" onclick="press('-')">-</button></td> 
+      </tr> 
+      <tr> 
+        <td><button class="number" value="0" onclick="press('0')">0</button></td> 
+        <td><button class="number" value="." onclick="press('.')">.</button></td> 
+        <td><button class="number" value="=" onclick="solve()">=</button></td> 
+        <td><button class="operator" value="+" onclick="press('+')">+</button></td> 
+      </tr> 
+  </table> 
+  <script> 
+        function clr(val) { 
+            document.getElementById("result").value= "" 
+        }
+        function press(val) { 
+            document.getElementById("result").value += val 
+        } 
+        var cal = document.getElementById("calculator"); 
+        cal.onkeyup = function (event) { 
+            if (event.keyCode === 13) { 
+                let x = document.getElementById("result").value 
+                solve(); 
+            } 
+        } 
+        function solve() { 
+            let x = document.getElementById("result").value 
+            let y = math.evaluate(x) 
+            document.getElementById("result").value = y 
+        }
+  </script> 
 </body> 
   
-</html>  
+</html>
