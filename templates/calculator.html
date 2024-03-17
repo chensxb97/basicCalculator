@@ -8,21 +8,17 @@
   
     <!-- For styling -->
     <style> 
-		.number {
-			background-color:slategrey
-		}
-		.operator {
-			background-color: navy
-		}
-		.clear {
-			background-color:skyblue
-		}
-
+        body {
+            background-color: black;
+        }
+    
         table { 
-            border: 1px solid black; 
-            margin:auto;
-			text-align:center
-        } 
+            border: 1px solid slategrey; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
           
         input[type="button"] { 
             width: 100%; 
@@ -41,12 +37,21 @@
             border: none; 
             border-radius: 5px; 
             border: 2px solid black; 
-        } 
+        }
+
+        .number {
+			background-color:slategrey
+		}
+		.operator {
+			background-color: navy
+		}
+		.clear {
+			background-color:skyblue
+		}
     </style> 
 </head> 
   
 <body> 
-	<!-- Create table -->
     <table id="calcu"> 
         <tr> 
             <td colspan="3"> 
@@ -54,7 +59,7 @@
             </td> 
             <td><input class="clear" type="button" value="c"></td> 
         </tr> 
-  
+
         <tr> 
             <td><input class="number" type="button" value="1"></td> 
             <td><input class="number" type="button" value="2"></td> 
