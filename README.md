@@ -1,5 +1,5 @@
 # basicCalculator
-A calculator app built using Flask
+A basic calculator built using html, javascript and flask.
 
 ## Usage
 
