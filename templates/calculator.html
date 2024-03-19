@@ -11,8 +11,8 @@
         }
     
         table { 
-            border: 3px solid slategrey; 
-            border-radius:1%;
+            border: 5px solid slategrey; 
+            border-radius: 2%;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -52,7 +52,7 @@
   
 <body> 
   <form method="post" action="/calculate">
-    <table id="calculator"> 
+        <table id="calculator"> 
         <tr> 
             <td colspan="3"> 
                 <input type="text" name="expression" id="result" readonly value="{{result}}"/> 
@@ -85,10 +85,10 @@
         </tr> 
     </table> 
   </form>
-  <script> 
+  <script>
         function clr() { 
             document.getElementById("result").value = "" 
-        }
+                    }
         function press(val) { 
             document.getElementById("result").value += val 
         }
