@@ -2,45 +2,69 @@
 <html> 
   
 <head> 
-    <title>A Basic Calculator</title> 
+    <title>A Basic Calculator By Benedict Chen</title> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"></script> 
     <!-- For styling -->
     <style> 
         body {
             background-color: black;
         }
-    
+
         table { 
-            border: 5px solid slategrey; 
-            border-radius: 2%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            border: 10px solid slategrey; 
+            border-radius: 20px; 
+            width: 700px;
+            height: 500px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        a:hover{
+            color:skyblue;
+            text-decoration: underline;
         }
           
         button { 
             width: 100%; 
-            padding: 20px 40px; 
+            padding: 40px 80px; 
             color: white; 
-            font-size: 24px; 
+            font-size: 40px; 
             font-weight: bold; 
-            border: none; 
-            border-radius: 5px; 
+            border: 2px solid black; 
+            border-radius: 10px; 
         } 
           
         input[type="text"] { 
-            padding: 20px 30px; 
-            font-size: 24px; 
+            padding: 40px 80px;
+            width: 500px; 
+            font-size: 40px; 
             font-weight: bold; 
-            border: none; 
-            border-radius: 5px; 
             border: 2px solid black; 
+            border-radius: 10px; 
         }
 
         button:active {
             transform: translateY(1px);
             background-color: darkslategray;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .description {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size:large;
+            text-align: center;
+            justify-content: center;
+            max-width: 1000px;
+            margin:auto;
+            margin-top: 30px;
         }
 
         .number {
@@ -52,52 +76,59 @@
 		.clear {
 			background-color:cadetblue
 		}
+
+        
     </style> 
 </head> 
   
 <body> 
-  <form method="post" action="/calculate">
-        <table id="calculator"> 
-        <tr> 
-            <td colspan="3"> 
-                <input type="text" name="expression" id="result" readonly value="{{result}}"/> 
-            </td> 
-            <td><button class="clear" type="button" value="clear" onclick="clr()">C</button></td>
-        </tr> 
-        <tr> 
-            <td><button class="number" type="button" value="1" onclick="press('1')">1</button></td> 
-            <td><button class="number" type="button" value="2" onclick="press('2')">2</button></td> 
-            <td><button class="number" type="button" value="3" onclick="press('3')">3</button></td> 
-            <td><button class="operator" type="button" value="/" onclick="press('/')">/</button></td> 
-        </tr> 
-        <tr> 
-            <td><button class="number" type="button" value="4" onclick="press('4')">4</button></td> 
-            <td><button class="number" type="button" value="5" onclick="press('5')">5</button></td> 
-            <td><button class="number" type="button" value="6" onclick="press('6')">6</button></td> 
-            <td><button class="operator" type="button" value="*" onclick="press('*')">x</button></td> 
-        </tr> 
-        <tr> 
-            <td><button class="number" type="button" value="7" onclick="press('7')">7</button></td> 
-            <td><button class="number" type="button" value="8" onclick="press('8')">8</button></td> 
-            <td><button class="number" type="button" value="9" onclick="press('9')">9</button></td> 
-            <td><button class="operator" type="button" value="-" onclick="press('-')">-</button></td> 
-        </tr> 
-        <tr> 
-            <td><button class="number" type="button" value="0" onclick="press('0')">0</button></td> 
-            <td><button class="number" type="button" value="." onclick="press('.')">.</button></td> 
-            <td><button class="number" type="submit" value="=">=</button></td> 
-            <td><button class="operator" type="button" value="+" onclick="press('+')">+</button></td> 
-        </tr> 
-    </table> 
-  </form>
-  <script>
+    <div class="container">
+        <form method="post" action="/calculate">
+                <table id="calculator"> 
+                <tr> 
+                    <td colspan="3"> 
+                        <input type="text" name="expression" id="result" readonly value="{{result}}"/> 
+                    </td> 
+                    <td><button class="clear" type="button" value="clear" onclick="clr()">C</button></td>
+                </tr> 
+                <tr> 
+                    <td><button class="number" type="button" value="1" onclick="press('1')">1</button></td> 
+                    <td><button class="number" type="button" value="2" onclick="press('2')">2</button></td> 
+                    <td><button class="number" type="button" value="3" onclick="press('3')">3</button></td> 
+                    <td><button class="operator" type="button" value="/" onclick="press('/')">/</button></td> 
+                </tr> 
+                <tr> 
+                    <td><button class="number" type="button" value="4" onclick="press('4')">4</button></td> 
+                    <td><button class="number" type="button" value="5" onclick="press('5')">5</button></td> 
+                    <td><button class="number" type="button" value="6" onclick="press('6')">6</button></td> 
+                    <td><button class="operator" type="button" value="*" onclick="press('*')">x</button></td> 
+                </tr> 
+                <tr> 
+                    <td><button class="number" type="button" value="7" onclick="press('7')">7</button></td> 
+                    <td><button class="number" type="button" value="8" onclick="press('8')">8</button></td> 
+                    <td><button class="number" type="button" value="9" onclick="press('9')">9</button></td> 
+                    <td><button class="operator" type="button" value="-" onclick="press('-')">-</button></td> 
+                </tr> 
+                <tr> 
+                    <td><button class="number" type="button" value="0" onclick="press('0')">0</button></td> 
+                    <td><button class="number" type="button" value="." onclick="press('.')">.</button></td> 
+                    <td><button class="number" type="submit" value="=">=</button></td> 
+                    <td><button class="operator" type="button" value="+" onclick="press('+')">+</button></td> 
+                </tr> 
+            </table>
+            <div class="description">
+                <span>A Basic Calculator by Benedict Chen. Do check out the source code <a href="https://github.com/chensxb97/basicCalculator" target="_blank">here.</a></span>
+            </div> 
+        </form>
+    </div>
+    <script>
         function clr() { 
             document.getElementById("result").value = "" 
-                    }
+        }
         function press(val) { 
             document.getElementById("result").value += val 
         }
-  </script> 
+    </script> 
 </body> 
   
 </html>
