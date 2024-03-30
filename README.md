@@ -1,5 +1,5 @@
 # Basic Calculator
-A basic calculator app built using Flask
+A basic calculator app built using Flask, Html and Javascript.
 
 # Requirements
 1. HTML renders calculator in a container
